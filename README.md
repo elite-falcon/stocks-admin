@@ -1,2 +1,2 @@
-# stocks-admin
+# stocks-market-admin
 Manage Stock Shares
