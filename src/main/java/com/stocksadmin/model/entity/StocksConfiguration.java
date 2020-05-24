@@ -1,5 +1,6 @@
 package com.stocksadmin.model.entity;
 
+import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,11 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "stocksconfiguration")
+@Table(name = "STOCKSCONFIGURATION")
 public class StocksConfiguration implements SerializableEntity {
 
 	@Id
-	@Column(name = "uuid")
+	@Column(name = "uuid", updatable = false, nullable = false)
 	private UUID uuid;
 
 	@Basic
@@ -20,11 +21,11 @@ public class StocksConfiguration implements SerializableEntity {
 	private String code;
 
 	@Basic
-	@Column(name = "createdAt")
+	@Column(name = "createat")
 	private long createdAt;
 
 	@Basic
-	@Column(name = "modifiedAt")
+	@Column(name = "modifiedat")
 	private long modifiedAt;
 
 	@Basic
@@ -74,4 +75,22 @@ public class StocksConfiguration implements SerializableEntity {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof StocksConfiguration))
+			return false;
+		StocksConfiguration that = (StocksConfiguration) o;
+		return Objects.equals(uuid, that.uuid) && Objects.equals(code, that.code) && Objects
+				.equals(createdAt, that.createdAt) && Objects.equals(modifiedAt, that.modifiedAt)
+				&& active == that.active;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(uuid, code, createdAt, modifiedAt, active);
+	}
+
 }

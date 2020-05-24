@@ -3,8 +3,11 @@ package com.stocksadmin.model.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.stocksadmin.model.entity.StocksConfiguration;
 
+@Component
 public class StocksTransformation {
 
 	/**

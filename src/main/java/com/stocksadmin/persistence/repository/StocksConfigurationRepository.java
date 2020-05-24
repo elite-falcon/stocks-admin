@@ -7,24 +7,22 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import com.stocksadmin.model.entity.StocksConfiguration;
 
-@Repository
-public interface StocksConfigurationRepository extends JpaRepository<StocksConfiguration, String> {
+public interface StocksConfigurationRepository extends JpaRepository<StocksConfiguration, UUID> {
 
-	@Query("SELECT c FROM stocksconfiguration c WHERE c.active = true")
-	List<StocksConfiguration> findActiveStocks();
+	@Query("SELECT c FROM StocksConfiguration c WHERE c.uuid = :uuid")
+	StocksConfiguration findByUuid(@Param("uuid") UUID uuid);
 
-	@Query("SELECT c FROM stocksconfiguration c WHERE c.uuid = uuid")
-	StocksConfiguration findStocks(@Param("uuid") UUID uuid);
+	@Query("SELECT c FROM StocksConfiguration c WHERE c.active = true")
+	List<StocksConfiguration> findActive();
 
-	@Query("SELECT EXISTS(SELECT 1 FROM stocksconfiguration c WHERE c.id = :uuid)")
-	boolean existsByUUID(@Param("uuid") UUID uuid);
+	@Query("SELECT true FROM StocksConfiguration c WHERE c.uuid = :uuid")
+	boolean existsByUuid(@Param("uuid") UUID uuid);
 
 	StocksConfiguration save(@Param("StocksConfiguration") StocksConfiguration stocksConfiguration);
 
-	void deleteByUUID(@Param("uuid") UUID uuid) throws EmptyResultDataAccessException;
+	void deleteByUuid(@Param("uuid") UUID uuid) throws EmptyResultDataAccessException;
 
 }

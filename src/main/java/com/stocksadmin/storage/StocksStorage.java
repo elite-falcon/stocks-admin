@@ -3,13 +3,14 @@ package com.stocksadmin.storage;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.stocksadmin.exception.AlreadyExistsException;
 import com.stocksadmin.exception.CreateException;
@@ -20,7 +21,7 @@ import com.stocksadmin.model.dto.StocksTransformation;
 import com.stocksadmin.model.entity.StocksConfiguration;
 import com.stocksadmin.persistence.repository.StocksConfigurationRepository;
 
-@Component
+@Repository
 public class StocksStorage {
 
 	private static Logger logger = LogManager.getLogger(StocksStorage.class);
@@ -44,7 +45,7 @@ public class StocksStorage {
 	 * @throws StocksAdminException
 	 */
 	public List<Stocks> findAllActiveStocks() throws StocksAdminException {
-		return treatResultSet(stocksConfigurationRepository.findActiveStocks());
+		return treatResultSet(stocksConfigurationRepository.findActive());
 	}
 
 	/**
@@ -52,11 +53,11 @@ public class StocksStorage {
 	 * @return
 	 * @throws NoDataException
 	 */
-	public Stocks findStocks(UUID uuid) throws NoDataException {
-		if (stocksConfigurationRepository.existsByUUID(uuid)) {
+	public Stocks findStock(UUID uuid) throws NoDataException {
+		if (stocksConfigurationRepository.existsByUuid(uuid)) {
 			throw new NoDataException(StocksAdminException.NO_DATA);
 		}
-		StocksConfiguration stocksConfiguration = stocksConfigurationRepository.findStocks(uuid);
+		StocksConfiguration stocksConfiguration = stocksConfigurationRepository.findByUuid(uuid);
 		return stocksTransformation.transformToStocks(stocksConfiguration);
 	}
 
@@ -65,8 +66,8 @@ public class StocksStorage {
 	 * @return
 	 * @throws StocksAdminException
 	 */
-	public Stocks create(Stocks stocks) throws StocksAdminException {
-		if (stocksConfigurationRepository.existsByUUID(stocks.getUuid())) {
+	public Stocks createStock(Stocks stocks) throws StocksAdminException {
+		if (stocksConfigurationRepository.existsByUuid(stocks.getUuid())) {
 			throw new AlreadyExistsException(StocksAdminException.ALREADY_EXISTS);
 		}
 		return treatSave(stocksTransformation.transformToStocksConfiguration(stocks));
@@ -79,7 +80,7 @@ public class StocksStorage {
 	@Transactional
 	public void deleteStockByUUID(UUID uuid) throws StocksAdminException {
 		try {
-			stocksConfigurationRepository.deleteByUUID(uuid);
+			stocksConfigurationRepository.deleteByUuid(uuid);
 			logger.info("Stocks configuration {} delete successfully", uuid);
 		}
 		catch (EmptyResultDataAccessException e) {

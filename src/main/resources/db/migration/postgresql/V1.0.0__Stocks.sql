@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS stocksconfiguration;
 
 CREATE TABLE stocksconfiguration (
-    uuid            uuid NOT NULL,
+    UUID            uuid NOT NULL,
     code            varchar(200) NOT NULL,
     createdAt       bigint,
     modifiedAt      bigint,

@@ -31,12 +31,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- context support -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-		</dependency>
-
 		<!-- hateoas -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
