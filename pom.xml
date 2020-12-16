@@ -21,6 +21,8 @@
 		<sonar.projectKey>falcon-lab_stocks-market-admin</sonar.projectKey>
 		<sonar.organization>3a49f7ec72b460299d94ad90d10260c79d23c5a6</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.test.inclusions>src/test/java*/**.java</sonar.test.inclusions>
+		<sonar.tests>src/test/java</sonar.tests>
 	</properties>
 
 	<dependencies>

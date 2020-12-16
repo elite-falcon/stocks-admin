@@ -1,3 +1,6 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=alert_status)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=coverage)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
+
 # stocks-market-admin
 Manage Stock Shares
 
