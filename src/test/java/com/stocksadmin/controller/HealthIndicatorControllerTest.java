@@ -3,16 +3,13 @@ package com.stocksadmin.controller;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.Status;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(Health.class)
+@SpringBootTest
 public class HealthIndicatorControllerTest {
 
 	@InjectMocks
