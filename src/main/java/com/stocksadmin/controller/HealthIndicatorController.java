@@ -10,5 +10,6 @@ public class HealthIndicatorController implements HealthIndicator {
 	@Override
 	public Health health() {
 		return Health.up().build();
+		
 	}
 }
