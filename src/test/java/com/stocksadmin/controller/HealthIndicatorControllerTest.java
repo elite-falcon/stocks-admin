@@ -9,7 +9,6 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.Status;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 public class HealthIndicatorControllerTest {
 
 	@InjectMocks
