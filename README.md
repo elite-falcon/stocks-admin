@@ -1,5 +1,8 @@
+![Build](https://github.com/falcon-lab/stocks-market-admin/workflows/Build/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=alert_status)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=coverage)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=code_smells)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=falcon-lab_stocks-market-admin&metric=bugs)](https://sonarcloud.io/dashboard?id=falcon-lab_stocks-market-admin)
 
 # stocks-market-admin
 Manage Stock Shares
