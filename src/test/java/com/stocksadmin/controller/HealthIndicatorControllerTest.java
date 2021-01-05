@@ -1,8 +1,8 @@
 package com.stocksadmin.controller;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.actuate.health.Health;
@@ -13,7 +13,7 @@ public class HealthIndicatorControllerTest {
 	@InjectMocks
 	private HealthIndicatorController healthIndicatorController;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
@@ -21,7 +21,7 @@ public class HealthIndicatorControllerTest {
 	@Test
 	public void healthIndicatorShouldReturnOkWhenAppIsUpAndRunning() {
 		Health health = healthIndicatorController.health();
-		Assert.assertEquals(Status.UP, health.getStatus());
+		Assertions.assertEquals(Status.UP, health.getStatus());
 	}
 
 }
