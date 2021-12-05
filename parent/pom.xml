@@ -36,10 +36,10 @@
 
     <!-- sonar -->
     <sonar.coverage.jacoco.xmlReportPaths>${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.language>java</sonar.language>
-    <sonar.login>cafc7ed4eb106f34c55435717026e8c5662e034a</sonar.login>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>3a49f7ec72b460299d94ad90d10260c79d23c5a6</sonar.organization>
+
     <sonar.scm.disabled>True</sonar.scm.disabled>
     <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
     <sonar.source>src</sonar.source>
