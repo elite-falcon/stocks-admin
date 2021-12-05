@@ -10,7 +10,7 @@ public class StocksAdminException extends Exception {
 	public static final String ALREADY_EXISTS = "Stocks configuration already exists.";
 	public static final String CREATION = "Creation of stocks configuration failed.";
 
-	protected Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	public StocksAdminException(String message) {
 		super(message);

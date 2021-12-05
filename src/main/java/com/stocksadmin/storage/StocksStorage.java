@@ -24,7 +24,7 @@ import com.stocksadmin.persistence.repository.StocksConfigurationRepository;
 @Repository
 public class StocksStorage {
 
-	private static Logger logger = LogManager.getLogger(StocksStorage.class);
+	private static final Logger LOGGER = LogManager.getLogger(StocksStorage.class);
 
 	@Autowired
 	private StocksConfigurationRepository stocksConfigurationRepository;
@@ -81,10 +81,10 @@ public class StocksStorage {
 	public void deleteStockByUUID(UUID uuid) throws StocksAdminException {
 		try {
 			stocksConfigurationRepository.deleteByUuid(uuid);
-			logger.info("Stocks configuration {} delete successfully", uuid);
+			LOGGER.info("Stocks configuration {} delete successfully", uuid);
 		}
 		catch (EmptyResultDataAccessException e) {
-			logger.error("Could not delete stocks configuration {}", uuid);
+			LOGGER.error("Could not delete stocks configuration {}", uuid);
 			throw new StocksAdminException(StocksAdminException.DELETION);
 		}
 	}
@@ -98,7 +98,7 @@ public class StocksStorage {
 		if (stocksConfigurationList.isEmpty()) {
 			throw new NoDataException(StocksAdminException.NO_DATA);
 		}
-		logger.info("Retrieved {} stocks", stocksConfigurationList.size());
+		LOGGER.info("Retrieved {} stocks", stocksConfigurationList.size());
 		return stocksTransformation.transformToStocksList(stocksConfigurationList);
 	}
 
@@ -110,11 +110,11 @@ public class StocksStorage {
 	private Stocks treatSave(StocksConfiguration stocksConfiguration) throws CreateException {
 		StocksConfiguration storedStocksConfiguration = stocksConfigurationRepository.save(stocksConfiguration);
 		if (Objects.isNull(storedStocksConfiguration)) {
-			logger.error("Could not create stocks configuration {}", stocksConfiguration.getCode());
+			LOGGER.error("Could not create stocks configuration {}", stocksConfiguration.getCode());
 			throw new CreateException(StocksAdminException.CREATION);
 		}
 		Stocks stocks = stocksTransformation.transformToStocks(storedStocksConfiguration);
-		logger.info("Created stocks configuration: {}", stocks.toString());
+		LOGGER.info("Created stocks configuration: {}", stocks.toString());
 		return stocks;
 	}
 
