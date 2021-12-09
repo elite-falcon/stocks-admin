@@ -1,12 +1,12 @@
 pipeline {
     agent {label "linux"}
     stages {
-        stage('Hello') {
+        stage('Start') {
             steps {
-                echo "hello from Jenkinsfile"
+                echo "Starting pipeline checks"
             }
         }
-        stage('for the PR') {
+        stage('Analyzing PR') {
             when {
                 branch 'PR-*'
             }
