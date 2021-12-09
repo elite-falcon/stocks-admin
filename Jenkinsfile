@@ -1,11 +1,6 @@
 pipeline {
     agent {label "linux"}
     stages {
-        stage('Start') {
-            steps {
-                echo "Starting pipeline checks"
-            }
-        }
         stage('Analyzing PR') {
             when {
                 branch 'PR-*'
